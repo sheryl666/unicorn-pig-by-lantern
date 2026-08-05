@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Unicorn pig（by lantern）</title>
+  <style>/*__INLINE_CSS__*/</style>
+</head>
+<body>
+  <main id="settingsApp" class="settings-app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">UNICORN PIG · BY LANTERN</p>
+        <h1>独角猪永远陪着你～</h1>
+        <p class="hero-copy">完全离线运行。昵称、角色包、主题颜色和提醒时段都保存在本机。</p>
+      </div>
+      <div class="status-chip"><span class="status-dot"></span>本地运行中</div>
+    </header>
+
+    <section class="dashboard-grid">
+      <form id="settingsForm" class="panel settings-panel">
+        <div class="panel-heading">
+          <div><p class="section-kicker">PERSONALIZE</p><h2>个性化设置</h2></div>
+          <button type="button" id="testButton" class="secondary-button">立即预览</button>
+        </div>
+
+        <label class="field field-wide">
+          <span>专属昵称</span>
+          <input id="nickname" name="nickname" maxlength="40" value="👑热爱工作的无敌小灯笼大王🏮">
+        </label>
+
+        <div class="field-row">
+          <label class="field color-field">
+            <span>主题颜色</span>
+            <span class="color-control"><input id="themeColor" name="themeColor" type="color" value="#8656cf"><output id="themeValue">#8656CF</output></span>
+          </label>
+          <label class="field">
+            <span>提醒间隔（分钟）</span>
+            <input id="intervalMinutes" name="intervalMinutes" type="number" min="1" max="720" value="60">
+          </label>
+        </div>
+
+        <div class="field-row">
+          <label class="field"><span>开始时间</span><input id="startTime" name="startTime" type="time" value="09:00"></label>
+          <label class="field"><span>结束时间</span><input id="endTime" name="endTime" type="time" value="19:00"></label>
+        </div>
+
+        <fieldset class="weekday-field">
+          <legend>提醒日期</legend>
+          <div class="weekday-list">
+            <label><input type="checkbox" name="weekday" value="1" checked><span>一</span></label>
+            <label><input type="checkbox" name="weekday" value="2" checked><span>二</span></label>
+            <label><input type="checkbox" name="weekday" value="3" checked><span>三</span></label>
+            <label><input type="checkbox" name="weekday" value="4" checked><span>四</span></label>
+            <label><input type="checkbox" name="weekday" value="5" checked><span>五</span></label>
+            <label><input type="checkbox" name="weekday" value="6"><span>六</span></label>
+            <label><input type="checkbox" name="weekday" value="0"><span>日</span></label>
+          </div>
+        </fieldset>
+
+        <div class="character-import">
+          <div><span class="field-title">动漫形象包</span><p id="packStatus">正在读取默认角色包…</p></div>
+          <label class="upload-button">选择图片<input id="characterFiles" type="file" accept="image/png,image/jpeg,image/webp" multiple></label>
+        </div>
+
+        <label id="loginItemRow" class="toggle-row hidden">
+          <span><strong>开机自动运行</strong><small>关闭窗口后仍驻留系统托盘</small></span>
+          <input id="openAtLogin" type="checkbox">
+        </label>
+
+        <div class="form-footer">
+          <p id="saveMessage" role="status">设置会自动保存在这台电脑</p>
+          <button class="primary-button" type="submit">保存并开始提醒</button>
+        </div>
+      </form>
+
+      <aside class="panel next-panel">
+        <p class="section-kicker">NEXT REMINDER</p>
+        <h2>下一次活动提醒</h2>
+        <div id="countdown" class="countdown">--:--:--</div>
+        <p id="nextTime" class="next-time">正在计算…</p>
+        <div id="miniPreview" class="mini-preview">
+          <img id="miniCharacter" alt="随机动漫形象">
+          <div><strong id="miniNickname">👑热爱工作的无敌小灯笼大王🏮</strong><span>起身走走，伸伸懒腰～</span></div>
+        </div>
+        <div class="offline-note"><strong>离线模式</strong><span>不上传昵称、图片或设置。浏览器版需保持此页面开启；桌面版关闭窗口后会驻留托盘。</span></div>
+      </aside>
+    </section>
+  </main>
+
+  <section id="reminderOverlay" class="reminder-overlay hidden" aria-live="assertive">
+    <div id="reminderCard" class="reminder-card">
+      <div class="reminder-left">
+        <div id="reminderNickname" class="reminder-nickname">👑热爱工作的无敌小灯笼大王🏮</div>
+        <img id="reminderCharacter" class="reminder-character" alt="今日随机动漫形象">
+      </div>
+      <div class="reminder-right">
+        <h2>✨ 休息一下吧 ✨</h2>
+        <div id="reminderDate" class="reminder-date"></div>
+        <div id="reminderTime" class="reminder-time"></div>
+        <p class="reminder-main">🧘‍♀️ 起身走一走，伸伸懒腰～</p>
+        <p class="reminder-sub">转转肩颈 · 拉伸腰背 · 活动腿部 💜</p>
+      </div>
+      <button id="dismissReminder" class="dismiss-button">好哒，动起来！🌷</button>
+    </div>
+  </section>
+
+  <script>/*__DEFAULT_ASSETS__*/</script>
+  <script>/*__SCHEDULER_CORE__*/</script>
+  <script>/*__APP_JS__*/</script>
+</body>
+</html>
